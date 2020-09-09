@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组多维扁平化处理</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	// 数组扁平化处理
+	var arr =  [1,[2,3,[4,5]]]
+	// 1. ES6的flat()
+	// flat() 方法会移除数组中的空项: es6的写法
+	// 多维数组转换一位数组 使用 Infinity 作为深度，展开任意深度的嵌套数组数字长度来决定几维
+	var str = arr.flat(Infinity);
+	var src = arr.flat(1);
+	// ES5的 写法
+	// function flatten(arr) {
+	// 	var res = [];
+	// 	for (let i = 0, length = arr.length; i < length; i++) {
+	// 	  if (Array.isArray(arr[i])) {
+	// 	    res = res.concat(flatten(arr[i])); //concat 并不会改变原数组
+	// 	  //res.push(...flatten(arr[i])); //扩展运算符  
+	// 	  } else {
+	// 	    res.push(arr[i]);
+	// 	  }
+	// 	}
+	// 	return res;
+	// }
+	// 2. 序列化后正则
+	// reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+	// 第一个参数就是就是处理函数
+	// 第二个参数是一个空数组，也是作为遍历的开始。（res）
+	function flatten(arr){
+		return arr.reduce(function(res,next){
+			return res.concat(Array.isArray(next) ? flatten(next) : next)
+		},[])
+	}
+	flatten(arr)
+	// 3 迭代+扩展运算符
+	// 每次while都会合并一层的元素，然后arr.some判定数组中是否存在数组，如果存在，继续进入第二次循环进行合并
+	// some()检测数组中是否有元素
+	while (arr.some(Array.isArray)) {
+	  arr = [].concat(...arr);
+	}
+	// console.log(arr)
+	// 1、性能最好的是es6的falt()
+	// 2、最差的就是while() reduce()
+	// console.log(arrs)
+</script>
