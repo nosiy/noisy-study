@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	// 1. 使用 filter 方法 去重
+	var arr = ["banana", "apple", "orange", "lemon", "apple", "lemon"];
+
+	function removeDuplicates(array){
+		// es5 写法
+		return array.filter(function(value,index){
+			// 原数组返回
+			return array.indexOf(value) === index
+		})
+		// es6 写法
+		// return data.filter((value, index) => data.indexOf(value) === index);
+	}
+	// console.log(removeDuplicates(arr)) // [ 'banana', 'apple', 'orange', 'lemon' ]
+
+	// filter方法从数据中检索出重复值
+	function removeDuplicates_arr(array){
+		// es5 写法
+		return array.filter(function(value,index){
+			// 原数组返回
+			return array.indexOf(value) !== index
+		})
+		// es6 写法
+		// return data.filter((value, index) => data.indexOf(value) === index);
+	}
+	// console.log(removeDuplicates_arr(arr)) // [ 'apple', 'lemon' ]
+
+	var stc = [1,'',2,6,'2','m',5,3,,2]
+	// 2.使用 ES6 的 Set, Set结构不会添加重复的值,已去重
+	function fun2(arr){
+		// 语法定义数组检索不为空值的排序
+		// return [...new Set(arr)].filter(Boolean).sort();
+		// 转化数组里字符串的为数字，如果为字母则剔除
+		// 如果 x 是特殊的非数字值 NaN（或者能被转换为这样的值），返回的值就是 true。如果 x 是其他值,则返回 false。
+		var _s = arr.map(function(value,index){
+			return typeof value == 'string' ? isNaN(value) ? '' : Number(value) : value
+		})
+		var sort = [...new Set(_s)].filter(Boolean);
+		console.log(sort)
+	}
+	fun2(stc)
+
+
+</script>
