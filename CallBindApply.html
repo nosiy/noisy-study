@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	/**
+	* call() 和 apply() 之间的区别
+	* 不同之处是：
+	* call() 方法分别接受参数。
+	* apply() 方法接受数组形式的参数。
+	* 如果要使用数组而不是参数列表，则 apply() 方法非常方便。
+	*/
+
+	// call() 方法是预定义的 JavaScript 方法。
+	// 它可以用来调用所有者对象作为参数的方法。
+	// 通过 call()，您能够使用属于另一个对象的方法。
+	var person = {
+	    fullName: function() {
+	        return this.firstName + " " + this.lastName;
+	    }
+	}
+	var person1 = {
+	    firstName:"Bill",
+	    lastName: "Gates",
+	}
+	var person2 = {
+	    firstName:"Steve",
+	    lastName: "Jobs",
+	}
+	person.fullName.call(person1);  // 将返回 "Bill Gates"
+
+
+	// 通过 apply() 方法，您能够编写用于不同对象的方法。
+	var person = {
+	  fullName: function(city, country) {
+	    return this.firstName + " " + this.lastName + "," + city + "," + country;
+	  }
+	}
+	var person1 = {
+	  firstName:"John",
+	  lastName: "Doe"
+	}
+	person.fullName.apply(person1, ["Oslo", "Norway"]);
+
+
+	// bind 返回的是一个新的函数，你必须调用它才会被执行。
+</script>

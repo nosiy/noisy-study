@@ -46,9 +46,132 @@
 			return typeof value == 'string' ? isNaN(value) ? '' : Number(value) : value
 		})
 		var sort = [...new Set(_s)].filter(Boolean);
-		console.log(sort)
+		// console.log(sort)
 	}
 	fun2(stc)
 
 
+	// 3. 使用 forEach 方法
+	function removeDetail(data){
+		var arr = [];
+		// includes() 方法用于判断字符串是否包含指定的子字符串。
+		data.forEach(function(value){
+			if(!arr.includes(value)){
+				arr.push(value)
+			}
+		})
+		return arr
+	}
+	// console.log(removeDetail(arr))
+
+	// 如果你想要查找某个元素在数组中的位置，你就用indexOf，如果你只是想知道数组中是否存在某个元素，你用includes方法比较合适的。
+	// indexOf字符串内进行不同的检索
+	// 4.使用 reduce 方法
+	function reduceDetail(data){
+		// 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+		var arr = data.reduce(function(a,b){
+			// console.log(a,b)
+			if(a.indexOf(b) < 0){
+				a.push(b)
+			}
+			return a
+		},[])
+		return arr
+		// or
+		return data.reduce(function(a,b){
+			return a.includes(b) ? a : [...a,b]
+		},[])
+		// or
+		return data.reduce((a,b) => a.includes(b) ? a : [...a,b] ,[])
+	}
+	// console.log(reduceDetail(arr))
+
+	// 5.在数组原型上添加去重方法
+	Array.prototype.unique = function () {
+		var _arr = [];
+		for (var i = 0; i < this.length; i++) {
+			var current = this[i];
+			if ( _arr.indexOf(current) < 0 ) _arr.push(current) 
+		};
+		return _arr
+	}
+	// console.log(arr.unique())
+
+	// 6. Array.from + ES6 Set
+	// Array.from() 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
+	// Array.from(obj, mapFn, thisArg)
+	function fromDetail(data){
+		// return [...new Set(data)]
+		return Array.from(new Set(data))
+	}
+	// console.log(fromDetail(arr))
+
+	// 7.从对象数组中删除重复的对象
+	let users = [{ id: 1, name: 'susan', age: 25 },
+				 { id: 2, name: 'cherry', age: 28 },
+				 { id: 3, name: 'cindy', age: 27 },
+				 { id: 2, name: 'cherry', age: 28 },
+				 { id: 1, name: 'susan', age: 25 }]
+	function usersDetailArray(arr){
+		// 传统写法
+		// for(var i = 0; i < arr.length - 1; i++) {
+		// 	for(var j = 1; j < arr.length; j++) {
+		// 	  if (arr[i].name === arr[j].name) {
+		// 	    arr[i].value = arr[j].value;
+		// 	    arr.splice(j, 1);
+		// 	  }
+		// 	}
+		// }
+		// return arr;
+		// 使用 new Map() 一组键值对的结构
+		/**
+			*set 设置参数 set('Adam', 67)
+			*has 查 has('Adam')
+			*get 获取参数 get('Adam')
+			*delete 删除参数 delete('Adam')
+		*/
+
+		// var str = new Map();
+		// str.set('admin','noisy')
+		// console.log(...new Map(users).values())
+	}
+
+	usersDetailArray(users)
+
+
+	// 1、 Object.keys()
+	// ES5 引入了Object.keys方法，返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（ enumerable ）属性的键名。
+	var obj = { foo: "bar", baz: 42 };
+	Object.keys(obj)
+	// ["foo", "baz"]
+
+	// 	2 、Object.values()
+	// Object.values方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（ enumerable ）属性的键值。
+	var obj = { foo: "bar", baz: 42 };
+	Object.values(obj)
+	// ["bar", 42]
+	// 返回数组的成员顺序。
+	var obj = { 100: 'a', 2: 'b', 7: 'c' };
+	Object.values(obj)
+	// ["b", "c", "a"]
+	// entries() 方法返回一个数组的迭代对象，该对象包含数组的键值对 (key/value)。
+	// var fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+	var objs = { 100: 'a', 2: 'b', 7: 'c' };
+	function objsFun(object){
+		var arr = [];
+		for (const [key, value] of Object.entries(object)) {
+		  console.log(`${key}: ${value}`);
+		}
+		console.log
+	}
+	objsFun(objs)
+	
+	
+	// console.log(Object.entries(obj))
+
+	
+	
+
+	
 </script>
