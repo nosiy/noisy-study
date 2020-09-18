@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>let和const命令</title>
+</head>
+<body>
+	<!-- 前面面试题常问到var,let,const区别
+	var定义的变量，没有块的概念，可以跨块访问, 不能跨函数访问。
+	let定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问。let不允许在相同作用域内，重复声明同一个变量。
+	const用来定义常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，而且不能修改。 -->
+</body>
+</html>
+<script>
+	var a = [],b = [];
+	for (var i = 0; i < 10; i++) {
+		a[i] = function(){
+			return i
+			// console.log(i)
+		}
+	};
+	for (let i = 0; i < 10; i++) {
+		b[i] = function(){
+			return i
+			// console.log(i)
+		}
+	};
+	console.log(a[6]()) // 10
+	console.log(b[6]()) // 6
+	// var声明的变量返回了正确的值。这表明，let声明的变量只在它所在的代码块有效。
+
+	// 块级展示
+	function f1() {
+	  let n = 5;
+	  if (true) {
+	    let n = 10;
+	  }
+	  console.log(n); // 5
+	}
+
+	function f2() {
+	  var n = 5;
+	  if (true) {
+	    var n = 10;
+	  }
+	  console.log(n); // 10
+	}
+
+	// 全局定义及获取
+	var a = 1;
+	// 如果在Node的REPL环境，可以写成global.a
+	// 或者采用通用方法，写成this.a
+	window.a // 1
+
+	let b = 1;
+	window.b // undefined
+</script>
