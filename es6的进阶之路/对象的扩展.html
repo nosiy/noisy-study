@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象的扩展</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	// 1.CommonJS 模块输出一组变量，就非常合适使用简洁写法
+	// let ms ={};
+
+	// function getItem(key){
+	// 	return key in ms ? ms[key] : null
+	// }
+	// function setItem(key,value){
+	// 	ms[key] = value
+	// }
+	// function clear(){
+	// 	ms ={}
+	// }
+
+	// module.exports = {
+	// 	getItem,
+	// 	setItem,
+	// 	clear
+	// }
+
+	// 2.属性的赋值器（setter）和取值器（getter），事实上也是采用这种写法。
+	// const cart ={
+	// 	_wheels:4,
+
+	// 	get wheels(){
+	// 		return this._wheels
+	// 	},
+	// 	set wheels(value){
+	// 		if(value <  this._wheels){
+	// 			console.log('数值小鱼')
+	// 		}
+	// 		this._wheels = value
+	// 	}
+	// }
+	// console.log(cart.wheels = 3)
+
+	// 3.简洁写法在打印对象时也很有用。
+	// let user = {
+	// 	name:'test'
+	// }
+	// let foo = {
+	// 	bar :'baz'
+	// }
+
+</script>

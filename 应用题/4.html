@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>如何将一组表单元素转化为对象</title>
+</head>
+<body>
+	<form id="form" method="post">
+		username:<input type="text" name="username" /><br>
+		password:<input type="password" name="password" /> <br>
+		<input type="submit" value="登录">
+	</form>
+</body>
+</html>
+<script>
+	const fromObject = from => Array.from(new FormData(from)).reduce(
+		// ...函数执行,
+		(_str,[key,value]) => ({
+			..._str,
+			[key]:value
+		}),
+		{} //返回对象执行
+	)
+	console.log(fromObject(document.querySelector('#form')))
+</script>

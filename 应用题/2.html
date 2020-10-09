@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用程序实现1-100有多少8的数字（88这种类型属于一个）</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	var arr = [];
+
+	// 1.用转换字符串形式来检测
+	for (let i = 0; i < 100; i++) {
+		if(String(i).indexOf('8') >= 0){
+			arr.push(i)
+		}
+	};
+	// es6写法 利用创建一个包含数组键的可迭代对象，filter检测规则返回数组形式
+	// console.log([...Array(100).keys()].filter(x => String(x).indexOf('8') != -1))
+
+	// console.log(arr)
+	// console.log(arr.length)
+
+	// 2.转换字符串计算方式
+	var _arr = [];
+	for (let i = 0; i < 100; i++) {
+		if (String(i).split('8').length >= 2 ) {
+			_arr.push(i)
+		};
+	};
+	// console.log(_arr)
+	// console.log(_arr.length)
+
+
+</script>

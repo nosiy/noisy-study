@@ -14,3 +14,8 @@ Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性
 
 Object.defineProperty()
 给对象添加一个属性并指定该属性的配置。
+
+Object.assign 方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。
+Object.assign()要拷贝的对象只有一个不可枚举属性invisible，这个属性并没有被拷贝进去。属性名为 Symbol 值的属性，也会被Object.assign()拷贝
+Object.assign()可以用来处理数组，但是会把数组视为对象。
+Object.assign([1, 2, 3], [4, 5]) // [4, 5, 3]

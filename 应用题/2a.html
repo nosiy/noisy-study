@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用程序实现1-400有多少个1的数字（统计有多少个1，例如11算2个）</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	// 第一种方法
+	function getNumberBack(){
+		let count = 0
+		for(let i=1;i<400;i++) {
+			// 包含有1的数字长度将大于2
+			count = count + (String(i).split('1').length - 1)
+		}
+		return count
+	}
+
+	// 第二种方法
+	function getNumber(num){
+		let numstr
+		if (!num) return 0
+		if (typeof num === 'string') numstr = num
+		else numstr = String(num)
+
+		if (Number(numstr) === 0) return 0
+
+		const curr =
+		numstr[0] > 1
+		  ? 10 ** (numstr.length - 1) +
+		    numstr[0] * (numstr.length - 1) * 10 ** (numstr.length - 2)
+		  : getNumber(10 ** (numstr.length - 1) - 1) + 1
+
+		return curr + getNumber(numstr.substr(1))
+	}
+
+	console.log(getNumber(400))
+	
+
+
+</script>
