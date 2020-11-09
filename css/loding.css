@@ -1,0 +1,120 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #454344;
+}
+
+.sphere {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16rem;
+  height: 16rem;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  animation: rotate-z calc(3 * 6s) linear both infinite;
+  -webkit-animation:rotate-z calc(3 * 6s) linear both infinite;
+}
+.logo{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width:50%;
+  height: 50%;
+  background: #797373;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+}
+
+
+.sphere .circles{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+/*var(--circles-count) 3*/
+/*--circle-rotate-duration: 3s;*/
+.sphere .circles.circles1{
+  transform: rotateZ(calc(1 * 0.5turn / 3));
+  -webkit-transform: rotateZ(calc(1 * 0.5turn / 3));
+}
+.sphere .circles.circles2{
+  transform: rotateZ(calc(2 * 0.5turn / 3));
+  -webkit-transform: rotateZ(calc(2 * 0.5turn / 3));
+}
+.sphere .circles.circles3{
+  transform: rotateZ(calc(3 * 0.5turn / 3));
+  -webkit-transform: rotateZ(calc(3 * 0.5turn / 3));
+}
+
+.sphere .circles .circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.sphere .circles .circle1{
+    animation: rotate-x calc(3s * calc(1 + 0.125 * 1)) calc(3s * 1 / 3)
+    linear both infinite;
+    -webkit-animation:rotate-x calc(3s * calc(1 + 0.125 * 1)) calc(3s * 1 / 3)
+    linear both infinite;
+}
+.sphere .circles .circle2{
+    animation: rotate-x calc(3s * calc(1 + 0.125 * 2)) calc(3s * 2 / 3)
+    linear both infinite;
+    -webkit-animation:rotate-x calc(3s * calc(1 + 0.125 * 2)) calc(3s * 2 / 3)
+    linear both infinite;
+}
+.sphere .circles .circle3{
+    animation: rotate-x calc(3s * calc(1 + 0.125 * 3)) calc(3s * 3 / 3)
+    linear both infinite;
+    -webkit-animation:rotate-x calc(3s * calc(1 + 0.125 * 3)) calc(3s * 3 / 3)
+    linear both infinite;
+}
+
+@keyframes rotate-z {
+  from {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: rotateZ(1turn);
+  }
+}
+@-webkit-keyframes rotate-z {
+    from {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: rotateZ(1turn);
+  }
+}
+
+@keyframes rotate-x {
+  from {
+    transform: rotateX(0);
+  }
+
+  to {
+    transform: rotateX(1turn);
+  }
+}
+
+@-webkit-keyframes rotate-x {
+  from {
+    transform: rotateX(0);
+  }
+
+  to {
+    transform: rotateX(1turn);
+  }  
+}
+

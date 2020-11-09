@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	// var arr = {
+	// 	'a':[
+	// 		{'name':'noisy','sex':'男'},
+	// 		{'name':'张三','sex':'女'},
+	// 		{'name':'狗子','sex':'女'},
+	// 	],
+	// 	's':[
+	// 		{'name':'one','sex':'女'},
+	// 		{'name':'two','sex':'女'},
+	// 		{'name':'three','sex':'女'},
+	// 	],
+	// 	'b' : [
+	// 		{'name':'李四','sex':'女'},
+	// 		{'name':'张四','sex':'男'},
+	// 		{'name':'李佳琪','sex':'男'}
+	// 	]
+	// }
+
+	// var result = {};
+	// for (var i in arr) {
+	// 	var _map = arr[i].filter(item =>{
+	// 		return item.sex == '男' ? item : ''
+	// 	})
+	// 	if (_map.length > 0) {
+	// 		result[i] = _map
+	// 	}else{
+	// 		result[i] = []
+	// 	}
+	// };
+	// console.log(result)
+	// console.log(arr)
+
+
+	var arr = [
+		{'name':'noisy','sex':'男'},
+		{'name':'张三','sex':'女'},
+		{'name':'狗子','sex':'女'},
+	]
+	// find方法返回数组中满足提供的测试函数的第一个元素的值
+	// var map = arr.find(item =>{
+	// 	// return item.name == 'noisy' ? item : ''
+	// 	return item.sex == '女' ? item : ''
+	// })
+	// findIndex方法返回数组中满足提供的测试函数的第一个元素的索引
+	var map = arr.findIndex(item =>{
+		// return item.name == 'noisy' ? item : ''
+		return item.sex == '女' ? item : ''
+	})
+	console.log(map)
+
+
+
+
+</script>

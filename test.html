@@ -5,10 +5,79 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	<label for="privkey">Private Key</label><br/>
+    <textarea id="privkey" rows="15" cols="65">-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQ
+WMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNR
+aY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB
+AoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fv
+xTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeH
+m7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd
+8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAF
+z/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5
+rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIM
+V7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATe
+aTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5Azil
+psLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Oz
+uku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876
+-----END RSA PRIVATE KEY-----</textarea><br/>
+    <label for="pubkey">Public Key</label><br/>
+    <textarea id="pubkey" rows="15" cols="65">-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtN
+FOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76
+xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4
+gwQco1KRMDSmXSMkDwIDAQAB
+-----END PUBLIC KEY-----</textarea><br/>
+    <label for="input">Text to encrypt:</label><br/>
+    <textarea id="input" name="input" type="text" rows=4 cols=70>This is a test!</textarea><br/>
+    <input id="testme" type="button" value="Test Me!!!" /><br/>
 </body>
 </html>
+<script src="./jq.js"></script>
+<script src="./jsencrypt.js"></script>
 <script>
+// $(function() {
+var encryptor = new JSEncrypt()  // 创建加密对象实例
+  //之前ssl生成的公钥，复制的时候要小心不要有空格
+var pubKey = '-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB-----END PUBLIC KEY-----'
+encryptor.setPublicKey(pubKey)//设置公钥
+var rsaPassWord = encryptor.encrypt('12345789')  // 对内容进行加密
+console.log(rsaPassWord)
+
+var decrypt = new JSEncrypt()//创建解密对象实例
+  //之前ssl生成的秘钥
+  var priKey  = '-----BEGIN RSA PRIVATE KEY-----MIICXQIBAAKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQABAoGAfY9LpnuWK5Bs50UVep5c93SJdUi82u7yMx4iHFMc/Z2hfenfYEzu+57fI4fvxTQ//5DbzRR/XKb8ulNv6+CHyPF31xk7YOBfkGI8qjLoq06V+FyBfDSwL8KbLyeHm7KUZnLNQbk8yGLzB3iYKkRHlmUanQGaNMIJziWOkN+N9dECQQD0ONYRNZeuM8zd8XJTSdcIX4a3gy3GGCJxOzv16XHxD03GW6UNLmfPwenKu+cdrQeaqEixrCejXdAFz/7+BSMpAkEA8EaSOeP5Xr3ZrbiKzi6TGMwHMvC7HdJxaBJbVRfApFrE0/mPwmP5rN7QwjrMY+0+AbXcm8mRQyQ1+IGEembsdwJBAN6az8Rv7QnD/YBvi52POIlRSSIMV7SwWvSK4WSMnGb1ZBbhgdg57DXaspcwHsFV7hByQ5BvMtIduHcT14ECfcECQATeaTgjFnqE/lQ22Rk0eGaYO80cc643BXVGafNfd9fcvwBMnk0iGX0XRsOozVt5AzilpsLBYuApa66NcVHJpCECQQDTjI2AQhFc1yRnCU/YgDnSpJVm1nASoRUnU8Jfm3Ozuku7JUXcVpt08DFSceCEX9unCuMcT72rAQlLpdZir876-----END RSA PRIVATE KEY-----'
+  decrypt.setPrivateKey(priKey)//设置秘钥
+  var uncrypted = decrypt.decrypt(rsaPassWord)//解密之前拿公钥加密的内容
+  console.log(uncrypted)
+
+// Run a quick encryption/decryption when they click.
+// $('#testme').click(function() {
+
+//   // Encrypt with the public key...
+//   var encrypt = new JSEncrypt();
+//   encrypt.setPublicKey($('#pubkey').val());
+//   var encrypted = encrypt.encrypt($('#input').val());
+//   console.log(encrypted)
+
+//   var decrypt = new JSEncrypt()//创建解密对象实例
+//   //之前ssl生成的秘钥
+//   var priKey  = '-----BEGIN RSA PRIVATE KEY-----MIICXAIBAAKBgQC1QQRl0HlrVv6kGqhgonD6A9SU6ZJpnEN+Q0blT/ue6Ndt97WRfxtSAs0QoquTreaDtfC4RRX4o+CU6BTuHLUm+eSvxZS9TzbwoYZq7ObbQAZAY+SYDgAA5PHf1wNN20dGMFFgVS/y0ZWvv1UNa2laEz0I8Vmr5ZlzIn88GkmSiQIDAQABAoGBAKYDKP4AFlXkVlMEP5hS8FtuSrUhwgKNJ5xsDnFV8sc3yKlmKp1a6DETc7N66t/Wdb3JVPPSAy+7GaYJc7IsBRZgVqhrjiYiTO3ZvJv3nwAT5snCoZrDqlFzNhR8zvUiyAfGD1pExBKLZKNH826dpfoKD2fYlBVOjz6i6dTKBvCJAkEA/GtL6q1JgGhGLOUenFveqOHJKUydBAk/3jLZksQqIaVxoB+jRQNOZjeSO9er0fxgI2kh0NnfXEvH+v326WxjBwJBALfTRar040v71GJq1m8eFxADIiPDNh5JD2yb71FtYzH9J5/d8SUHI/CUFoROOhxr3DpagmrnTn28H0088vubKe8CQDKMOhOwx/tS5lqvN0YQj7I6JNKEaR0ZzRRuEmv1pIpAW1S5gTScyOJnVn1tXxcZ9xagQwlT2ArfkhiNKxjrf5kCQAwBSDN5+r4jnCMxRv/Kv0bUbY5YWVhw/QjixiZTNn81QTk3jWAVr0su4KmTUkg44xEMiCfjI0Ui3Ah3SocUAxECQAmHCjy8WPjhJN8y0MXSX05OyPTtysrdFzm1pwZNm/tWnhW7GvYQpvE/iAcNrNNb5k17fCImJLH5gbdvJJmCWRk=-----END RSA PRIVATE KEY----'
+//   decrypt.setPrivateKey(priKey)//设置秘钥
+//   var uncrypted = decrypt.decrypt(encrypted)//解密之前拿公钥加密的内容
+//   console.log(uncrypted)
+//   // console.log(decrypt.setPrivateKey($('#privkey').val()))
+//   // console.log(uncrypted)
+//   // Now a simple check to see if the round-trip worked.
+//   // if (uncrypted == $('#input').val()) {
+//   //   alert('It works!!!');
+//   // }
+//   // else {
+//   //   alert('Something went wrong....');
+//   // }
+// });
+// });
+
 	// var timer = setTimeout(function(){
 	// 	alert('Hello World')
 	// },1500)
@@ -24,7 +93,7 @@
 	// 		},1500)
 	// 	};
 	// }
-	alert(1);
-	confirm();
-	prompt();
+	// alert(1);
+	// confirm();
+	// prompt();
 </script>

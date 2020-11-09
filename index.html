@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,li{
+			list-style: none
+		}
+		ul{
+			width: 100%;
+			height: 20px;
+			margin-top: 50px;
+			display: flex;
+			-webkit-display: flex;
+			position: relative;
+		}
+		li{
+			flex:1;
+			-webkit-flex: 1;
+			width: 100%;
+			/*border-right: 3px solid blue;*/
+			position: relative;
+			z-index: 100;
+			background: #cccccc;
+		}
+		li span{
+			position: absolute;
+			width: 3px;
+			height: 20px;
+			right: 0;
+			background: red;
+		}
+		li:first-child{
+			border-radius: 8px 0 0 8px;
+		}
+		li:nth-last-child(2){
+			border-radius: 0 8px 8px 0;
+		}
+		li:nth-last-child(2) span,
+		li:nth-last-child(1) span{
+			display: none;
+		}
+
+		li:last-child{
+			position: absolute;
+			border-right: 0;
+			width: auto;
+			top: 0;
+			right: 0;
+		}
+		li div{
+			top: -50px;
+			position: absolute;
+			display: block;
+            width: 36px;
+            height: 36px;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 36px;
+            border-radius: 50%;
+            background: red;
+            text-align: center;
+            transform: translateX(-18px);
+			-webkit-transform: translateX(-18px);
+		}
+		.box{
+			width: 80%;
+			height: auto;
+			position: relative;
+			margin: 0 auto;
+		}
+		.boxList{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: yellow;
+			z-index: 99;
+		}
+	</style>
+<body>
+	<div class="box">
+		<ul>
+			<li>
+				<div>1</div>
+				<span></span>
+			</li>
+			<li>
+				<div>1</div>
+				<span></span>
+			</li>
+			<li>
+				<div>1</div>
+				<span></span>
+			</li>
+			<li>
+				<div>1</div>
+				<span></span>
+			</li>
+		</ul>
+		<div class="boxList"></div>
+	</div>
+</body>
+</html>
