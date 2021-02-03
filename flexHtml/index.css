@@ -1,0 +1,38 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul,li{
+	list-style: none
+}
+img{
+	border: 0;
+}
+.box{
+	width: calc(100%-30px);
+	margin: 0 auto;
+	height: auto;
+	border: 1px solid red;
+}
+.box li{
+	width: 100%;
+	height: auto;
+}
+.box li .title{
+	padding: 0 15px;
+	display: inline-block;
+}
+.box li .value{
+	padding: 0 15px;
+}
+.flexbox-wrap-c,
+.flexbox-wrap-cy{
+	width: 100%
+}
+.title{
+	border-right:1px solid red; 
+}
+.photo{
+	padding: 10px;
+	width: 100px;
+}

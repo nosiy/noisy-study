@@ -45,3 +45,83 @@
 	</div>
 </body>
 </html>
+<script>
+	// 第一题
+	/* 测试:
+		if (product([1, 2, 3, 4]) === 24 && product([0, 1, 2]) === 0 && product([99, 88, 77, 66]) === 44274384) {
+		    console.log('测试通过!');
+		}
+		else {
+		    console.log('测试失败!');
+		}
+	*/
+	function product(arr) {
+	    if(!arr.includes(0)){
+	        return arr.reduce(function(a,b){
+	            return a*b
+	        })
+	    }else{
+	        return 0;
+	    }
+	}
+
+	// 第二题
+	/* 测试:
+		if (string2int('0') === 0 && string2int('12345') === 12345 && string2int('12300') === 12300) {
+		    if (string2int.toString().indexOf('parseInt') !== -1) {
+		        console.log('请勿使用parseInt()!');
+		    } else if (string2int.toString().indexOf('Number') !== -1) {
+		        console.log('请勿使用Number()!');
+		    } else {
+		        console.log('测试通过!');
+		    }
+		}
+		else {
+		    console.log('测试失败!');
+		}
+	*/
+	function string2int(s) {
+		var _num = []
+		for(var i in s){
+			_num.push(i)
+		}
+		// 隐式转换
+		return _num.map(x => x * 1 ).reduce((x,y) => x*10 + y)
+	}
+
+	// 第三题
+	/* 测试:
+		if (normalize(['adam', 'LISA', 'barT']).toString() === ['Adam', 'Lisa', 'Bart'].toString()) {
+		    console.log('测试通过!');
+		}
+		else {
+		    console.log('测试失败!');
+		}
+	*/
+	function normalize(arr) {
+		// toUpperCase转换为大写,toLowerCase转换为小写
+		var result = [];
+		result = arr.map(function(value){
+			var str = value.toLowerCase()
+			// return str.replace(str[0], str[0].toUpperCase()) // 一种
+			// return str[0].toUpperCase() + str.substring(1) // 二种
+		})
+		return result
+	}
+
+	// 第四题
+	/* 测试:
+		利用map()把字符串变成整数，他写的代码很简洁：
+		var _mapArr = ['1', '2', '3'];
+		var r;
+		_mapArr.map(parseInt) //[1, NaN, NaN, NaN]
+		解释下原理并且实现正确的操作
+	*/
+	// map方法的函数只要一个参数，但是map传递的参数有三个，分别是：数组元素、元素索引，数组本身，而paresInt是可以接受两个参数的
+	// _mapArr.map(paresInt(value, index)) //默认的执行情况
+	var _mapArr = ['1', '2', '3'] , r;
+	r = _mapArr.map(function(value){
+		// return value * 1
+		return parseInt(value)
+	})
+</script>

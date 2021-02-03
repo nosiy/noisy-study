@@ -1,0 +1,54 @@
+<html>
+ <head></head>
+ <body>
+  <p>
+  <span style="font-size: 18pt; color: #7e368c;">
+  <strong>
+  <img style="display: block; margin-left: auto; margin-right: auto;" src="https://commapi.wabo66.com/storage/upload/imgs/20201023/16034461621107.png" alt="" width="499" height="520" />
+  </strong>
+  </span>
+  </p> 
+  <div class="activity-border-container" style="margin: 30px 1.5rem 0;    padding: 0 1.3rem 2rem 0;"> 
+   <p style="text-align: center;padding-top: 2rem; padding-bottom: 1rem;">
+   <span style="color: #7e368c;">
+   <span style="font-size: 22px;padding-bottom:0.85rem">
+   <strong class="activityCondition">活动条件</strong>
+   </span>
+   </span>
+   </p> 
+   <p style="display: flex; color: #8395a6;line-height: 1.7; margin:3px;    font-size: 16px;">
+	   <strong style="color: #151515;">
+	   <em class="iconfont icon-shoucang" style="font-size: 1.4rem; margin-right: 5px;">收藏</em>活动对象：</strong>
+	   <span style="flex: 1;">WABO全体会员</span>
+   </p> 
+   <p style="display: flex; color: #8395a6;line-height: 1.7; margin:3px;    font-size: 16px;">
+	   <strong style="color: #151515;"><em class="iconfont icon-shoucang" style="font-size: 1.4rem; margin-right: 5px;">收藏</em>活动时间：</strong>
+	   <span style="flex: 1;">2020年11月01日</span>
+   </p> 
+   <p style="display: flex; color: #8395a6;line-height: 1.7; margin:3px;    font-size: 16px;">
+	   <strong style="color: #151515;"><em class="iconfont icon-shoucang" style="font-size: 1.4rem; margin-right: 5px;">收藏</em>活动内容：</strong>
+	   <span style="flex: 1;">活动期间指定两场赛事，根据场内 的四支队伍中比赛分最高队伍与比赛得分最低 的队伍分差作为奖励派发，最高可获得彩金红 包888元！</span>
+   </p> 
+  </div>
+ </body>
+</html>
+.activityCondition{
+    $left-width:65%;
+    position: relative;
+    &::before,&::after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: $left-width;
+      height: 1px;
+    }
+    &::before{
+      left: -($left-width + 5%);
+      background-image: linear-gradient(to left, #E3B2EC , transparent);
+    }
+    &::after{
+      right: -($left-width + 5%);
+      background-image: linear-gradient(to right, #E3B2EC , transparent);
+    }
+  }

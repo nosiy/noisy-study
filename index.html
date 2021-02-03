@@ -84,6 +84,21 @@
 			background: yellow;
 			z-index: 99;
 		}
+			input::-moz-placeholder { color:red !important; }
+	    input::-webkit-input-placeholder { color:red !important; }
+	    input:-ms-input-placeholder { color:red !important;}
+
+
+	    .el-button{
+	        display: flex;
+	        align-items: center;
+	        justify-content: center;
+	        width: 60%;
+	        height: 50px;
+	        font-size: 3.5vw;
+	        margin-top: 20px;
+	        background: #cccccc;
+	    }
 	</style>
 <body>
 	<div class="box">
@@ -107,5 +122,69 @@
 		</ul>
 		<div class="boxList"></div>
 	</div>
+	<input type="text" placeholder='sad' >
+
+	<div class="el-button" onclick="checkClick(event)">点击我尝试</div>
+  <button class="el-button" onclick="checkClick(event)">点击我尝试</button>
+  <!-- <button class="el-button" tap="checkClick(event)">点击我尝试</button> -->
+  <div id="number">0</div>
 </body>
 </html>
+<script>
+	// var number = 0;
+	// function checkClick(){
+	// 	document.querySelector('#number').innerHTML = this.number++
+	// }
+	// var _t = new Promise((reslove,reject) =>{
+
+	// })
+	// var p = Promise.resolve('Hello');
+	
+	// p.then(function (s){
+	//   console.log(s)
+	// });
+
+	// var p1 = function(){
+	// 	return setTimeout(function(){
+	// 		console.log('我先打印11')
+	// 	},1500)
+	// }
+	// var p2 = function(){
+	// 	return setTimeout(function(){
+	// 		console.log('我先打印22')
+	// 	},2000)
+	// }
+	// // Promise.all([p1,p2])
+	// Promise.resolve(p1()).then(function(){
+	// 	console.log('提交')
+	// })
+
+	var fun1 = function(){
+		return new Promise((resolve)=>{
+			resolve(2)
+		})
+	}
+	var fun2 = function(){
+		return new Promise((resolve)=>{
+			resolve(3)
+		})
+	}
+
+	Promise.race([fun1(),fun2()]).then((e)=>{
+		console.log(e)
+		console.log('已先成功执行')
+	}).catch(()=>{
+		console.log('已执行完毕')
+	})
+
+// function f(){
+//   var o = {};
+//   var o2 = {};
+//   o.a = o2; // o 引用 o2
+//   o2.a = o; // o2 引用 o
+
+//   return "azerty";
+// }
+
+// f();
+</script>

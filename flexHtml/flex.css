@@ -1,0 +1,41 @@
+/* 在框架中使用可不添加兼容方式写法，h5或者pc需添加 */
+/*.flexbox-center{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}*/
+.flexbox-wrap-c,.flexbox-wrap-cy{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.flexbox-wrap-cx{
+   flex-flow: row; /* 默认横轴 */
+}
+.flexbox-wrap-cy{
+   flex-flow: column;
+}
+
+.flexbox-wrap-y{
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.flexbox-just{
+    width: 100%;
+	-webkit-box-flex: 1;
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}

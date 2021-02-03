@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 400px;
+			height: 400px;
+			margin:0 auto;
+			margin-top: 50px;
+			border: 1px solid red;
+			display: grid;
+			grid-template-columns: calc(33.33% - 20px) calc(33.33% - 20px) calc(33.33% - 20px);
+		  	grid-template-rows: calc(33.33% - 20px) calc(33.33% - 20px) calc(33.33% - 20px);
+			grid-row-gap: 20px;
+		  	grid-column-gap: 20px;
+		  	/*grid-gap: 20px 20px;*/
+		}
+		.box div{
+			display: flex;
+			align-items:center;
+			justify-content:center;
+		}
+	</style>
+<body>
+	<div class="box">
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+	</div>
+</body>
+</html>
